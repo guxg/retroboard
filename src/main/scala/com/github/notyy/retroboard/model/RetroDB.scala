@@ -2,7 +2,6 @@ package com.github.notyy.retroboard.model
 
 import org.squeryl.{Session, KeyedEntity, Schema}
 import org.squeryl.PrimitiveTypeMode._
-import org.squeryl.annotations._
 import net.liftweb.common.Loggable
 import com.github.notyy.retroboard.lib.SqlLog
 
@@ -25,13 +24,13 @@ object RetroStatus extends Enumeration {
   val Complete = Value(3, "已结束")
 }
 
-class Retro(val id: String, val creator: String, var status: RetroStatus.RetroStatus) extends KeyedEntity[String]{
-
+class Retro(val title: String, val creator: String, var status: RetroStatus.RetroStatus = RetroStatus.Waiting) extends KeyedEntity[Long]{
+  val id: Long = 0
   def this() = this("", "", RetroStatus.Waiting)
 }
 
 object Retro {
   import RetroDB._
 
-  def listAll: List[Retro] = from(retros)(select(_)).toList
+  def listAll: List[Retro] = from(retros)(r => select(r) orderBy(r.id desc)).toList
 }

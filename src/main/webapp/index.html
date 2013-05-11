@@ -15,8 +15,9 @@
                 创建回顾
             </button>
         </div>
+        <div class="row" id="createRetroForm" style="display: none; margin:0 auto; text-align: center">创建表单的占位符</div>
         <div class="row" style="text-align:center">
-            <table class="table table-hover" data-lift="Retros.list">
+            <table class="table table-hover">
                 <caption class="lead">前事不忘,后事之师</caption>
                 <thead>
                 <tr>
@@ -25,26 +26,14 @@
                     <th>状态</th>
                 </tr>
                 </thead>
-                <tbody>
+                <tbody data-lift="Retros.list">
+                <tr id="newRetro" style="display: block">
+                    <!-- 新回顾的占位符 -->
+                </tr>
                 <tr class="retro-line">
-                    <td>20130512上海scala爱好者聚会回顾</td>
-                    <td>杨云</td>
-                    <td>等待中</td>
-                </tr>
-                <tr class="warning">
-                    <td>lift实战</td>
-                    <td>杨云</td>
-                    <td>等待中</td>
-                </tr>
-                <tr class="error">
-                    <td>scala与设计模式</td>
-                    <td>老猪</td>
-                    <td>进行中</td>
-                </tr>
-                <tr class="success">
-                    <td>play2的苦与乐</td>
-                    <td>汪院长</td>
-                    <td>已结束</td>
+                    <td class="retro-title">20130512上海scala爱好者聚会回顾</td>
+                    <td class="retro-creator">杨云</td>
+                    <td class="retro-status">等待中</td>
                 </tr>
                 </tbody>
             </table>

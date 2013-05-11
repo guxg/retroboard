@@ -47,14 +47,7 @@ class Boot extends Loggable {
     // Build SiteMap
     val entries = List(
       Menu.i("Home") / "index", // the simple way to declare a menu
-      Menu.i("Publish") / "publish",
-      Menu.i("Login") / "login",
       Menu.i("Detail") / "detail",
-      Menu.i("Success") / "success",
-      Menu.i("DonationPage") / "donation-page",
-      Menu.i("ApplyStuff") / "apply-stuff",
-      Menu.i("MyDonations") / "my-donations",
-
       // more complex because this menu allows anything in the
       // /static path to be visible
       Menu(Loc("Static", Link(List("static"), matchHead_? = true, "/static/index"),

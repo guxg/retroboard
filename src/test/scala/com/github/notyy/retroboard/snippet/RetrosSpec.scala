@@ -12,6 +12,7 @@ import org.squeryl.adapters.H2Adapter
 import net.liftweb.common.Loggable
 import com.github.notyy.retroboard.lib.SqlLog
 import org.squeryl.PrimitiveTypeMode._
+import net.liftweb.http.LiftRules
 
 class RetrosSpec extends FunSpec with ShouldMatchers with BeforeAndAfter with Loggable {
   describe("Retro列表控件") {
@@ -53,11 +54,15 @@ class RetrosSpec extends FunSpec with ShouldMatchers with BeforeAndAfter with Lo
       RetroDB.initDB()
       RetroDB.retros.insert(
         List(
-          new Retro(id = "等待中的回顾", creator = "用户1", status = RetroStatus.Waiting),
-          new Retro(id = "进行中的回顾", creator = "用户2", status = RetroStatus.OnGoing),
-          new Retro(id = "结束的回顾", creator = "用户3", status = RetroStatus.Complete)
+          new Retro(title = "等待中的回顾", creator = "用户1", status = RetroStatus.Waiting),
+          new Retro(title = "进行中的回顾", creator = "用户2", status = RetroStatus.OnGoing),
+          new Retro(title = "结束的回顾", creator = "用户3", status = RetroStatus.Complete)
         )
       )
     }
+  }
+
+  after {
+    LiftRules.unloadHooks.toList.foreach(_())
   }
 }

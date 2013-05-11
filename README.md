@@ -1,6 +1,23 @@
 retroboard
 ==========================
 
+a retro tool for distrubuted dev group.
+
+features
+-------------
+
+####implemented
+
+*
+
+####planned
+
+*
+
+
+how to contribute
+-------------------
+
 Q&A
 
 Q: How to get into SBT interactive shell?

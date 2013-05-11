@@ -25,6 +25,12 @@
     <logger name="bootstrap.liftweb" level="info" additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
+    <logger name="com.github.notyy" level="debug" additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="com.github.notyy.retroboard.lib.SqlLog" level="debug" additivity="false">
+        <appender-ref ref="SQLFILE"/>
+    </logger>
     <root level="warn">
         <appender-ref ref="STDOUT"/>
     </root>

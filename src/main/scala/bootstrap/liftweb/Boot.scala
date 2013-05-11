@@ -13,7 +13,7 @@ import java.sql.DriverManager
 import org.squeryl.Session
 import org.squeryl.adapters.H2Adapter
 import net.liftweb.squerylrecord.RecordTypeMode._
-import com.github.notyy.retroboard.model.MiscDB
+import com.github.notyy.retroboard.model.{RetroDB, MiscDB}
 import com.github.notyy.retroboard.lib.SqlLog
 import com.github.notyy.retroboard.state.currUser
 import scala.xml.Null
@@ -39,7 +39,7 @@ class Boot extends Loggable {
       }
     })
 
-    MiscDB.initdb()
+    RetroDB.initDB()
 
     // where to search snippet
     LiftRules.addToPackages("com.github.notyy.retroboard")

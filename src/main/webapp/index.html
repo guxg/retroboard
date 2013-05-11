@@ -7,11 +7,16 @@
     <link rel="stylesheet" href="vendor/css/bootstrap.min.css"/>
     <title data-lift="Menu.title">Retroboard-</title>
 </head>
-<body>
-<div data-lift="surround?with=default;at=content">
+<body data-lift-content-id="real-content">
+<div id="real-content" data-lift="surround?with=default;at=content">
     <div class="container">
         <div class="row" style="text-align:center">
-            <table class="table table-hover">
+            <button class="btn btn-primary btn-large" data-lift="Retros.createButton">
+                创建回顾
+            </button>
+        </div>
+        <div class="row" style="text-align:center">
+            <table class="table table-hover" data-lift="Retros.list">
                 <caption class="lead">前事不忘,后事之师</caption>
                 <thead>
                 <tr>
@@ -21,15 +26,15 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr class="warning">
+                <tr class="retro-line">
                     <td>20130512上海scala爱好者聚会回顾</td>
                     <td>杨云</td>
                     <td>等待中</td>
                 </tr>
-                <tr class="error">
+                <tr class="warning">
                     <td>lift实战</td>
                     <td>杨云</td>
-                    <td>进行中</td>
+                    <td>等待中</td>
                 </tr>
                 <tr class="error">
                     <td>scala与设计模式</td>
@@ -47,6 +52,5 @@
     </div>
 </div>
 </body>
-</html>
 
 

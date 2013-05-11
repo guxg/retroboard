@@ -1,0 +1,43 @@
+<div>
+    <wizard:wizard_top> <div> <wizard:bind/> </div> </wizard:wizard_top>
+    <wizard:wizard_top> <div> <wizard:bind/> </div> </wizard:wizard_top>
+    <wizard:screen_top> <div> <wizard:bind/> </div> </wizard:screen_top>
+    <wizard:errors>
+        <div>
+            <ul>
+                <wizard:item>
+                    <li><wizard:bind/></li>
+                </wizard:item>
+            </ul>
+        </div>
+    </wizard:errors>
+    <div class="form-horizontal" style="width: 500px" lift:bind="wizard:fields">
+        <div class="control-group" style="position: relative" lift:bind="wizard:line">
+                <wizard:label>
+                    <label class=" control-label" wizard:for=""><wizard:bind></wizard:bind></label>
+                </wizard:label>
+
+                <wizard:help><span><wizard:bind></wizard:bind></span></wizard:help>
+
+            <div class="controls">
+                <wizard:form></wizard:form>
+            </div>
+            <wizard:field_errors>
+                <ul style="list-style: none;margin: 0;position: absolute; right: 0;bottom: 0;">
+                    <wizard:error>
+                        <li>
+                            <wizard:bind/>
+                        </li>
+                    </wizard:error>
+                </ul>
+            </wizard:field_errors>
+        </div>
+        <div class="control-group">
+            <div class="controls">
+                <input value="确定" class="btn" type="submit">
+            </div>
+        </div>
+    </div>
+    <wizard:screen_bottom><div><wizard:bind></wizard:bind></div></wizard:screen_bottom>
+    <wizard:wizard_bottom><div><wizard:bind></wizard:bind></div></wizard:wizard_bottom>
+</div>

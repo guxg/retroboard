@@ -10,17 +10,16 @@ import lib.DependencyFactory
 class HelloWorld extends Loggable {
 
   // replace the contents of the element with id "time" with the date
-//  def howdy = { (x:NodeSeq) =>
-//    logger.info("time input = ")
-//    logger.info(x.mkString)
-//      val f = ("#time *" #> date.map(_.toString))
-//      f(x)
-////    <p>time</p>
-//  }
+  //  def howdy = { (x:NodeSeq) =>
+  //    logger.info("time input = ")
+  //    logger.info(x.mkString)
+  //      val f = ("#time *" #> date.map(_.toString))
+  //      f(x)
+  ////    <p>time</p>
+  //  }
 
-   lazy val date: Date = DependencyFactory.time.vend // create the date via factory
+  lazy val date: Date = DependencyFactory.time.vend // create the date via factory
 
-   def howdy = ".time *+" #> date.toString
-
+  def howdy = ".time *+" #> (date.toString + "test")
 }
 

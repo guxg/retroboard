@@ -1,13 +1,14 @@
 package com.github.notyy.retroboard.snippet
 
 import net.liftweb.http.LiftScreen
-import net.liftweb.common.Loggable
+import net.liftweb.common.{Full, Loggable}
 import com.github.notyy.retroboard.model.{RetroStatus, Retro, RetroDB}
 import net.liftweb.http.js.JsCmds.{Replace, Alert}
 import net.liftweb.http.js.jquery.JqJsCmds._
 import scala.xml.NodeSeq
 import net.liftweb.util.Helpers._
 import net.liftweb.http.js.JsCmds.Replace
+import com.github.notyy.retroboard.state.currUser
 
 class RetroScreen extends LiftScreen with Loggable {
   override def defaultToAjax_? = true
@@ -15,11 +16,12 @@ class RetroScreen extends LiftScreen with Loggable {
   var id: Long = 0;
   val title = field("请输入主题", "", trim, valMinLen(5, "主题至少5个字符"), valMaxLen(50, "主题最多50个字符"),
     "class" -> "string_field", "id" -> "tagInput")
-  val nickName = field("请输入昵称", "")
+  val nickName = field("请输入昵称", currUser.get.getOrElse(""))
   val passCode = field("请设定回顾房间的密码", "")
 
   override def finish() {
     id = RetroDB.retros.insert(new Retro(title, nickName, passCode)).id
+    currUser(Full(nickName))
   }
 
   override def calcAjaxOnDone = {

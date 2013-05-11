@@ -16,9 +16,10 @@ class RetroScreen extends LiftScreen with Loggable {
   val title = field("请输入主题", "", trim, valMinLen(5, "主题至少5个字符"), valMaxLen(50, "主题最多50个字符"),
     "class" -> "string_field", "id" -> "tagInput")
   val nickName = field("请输入昵称", "")
+  val passCode = field("请设定回顾房间的密码", "")
 
   override def finish() {
-    id = RetroDB.retros.insert(new Retro(title, nickName)).id
+    id = RetroDB.retros.insert(new Retro(title, nickName, passCode)).id
   }
 
   override def calcAjaxOnDone = {

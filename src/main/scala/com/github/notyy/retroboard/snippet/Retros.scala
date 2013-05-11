@@ -32,9 +32,7 @@ class Retros extends Loggable {
           logger.info(s"retroInfo\nid=${retro.id}\ntitle=${retro.title}\ncreator=${retro.creator}")
           ".retro-line [class]" #> retroStatusMap(retro.status) &
             ".retro-line [id]" #> s"retro-${retro.id}" &
-            ".retro-title *" #> <a href={s"detail?id=${retro.id}"}>
-              {retro.title}
-            </a> &
+            ".retro-title *" #> <a href={s"detail?id=${retro.id}"}>{retro.title}</a> &
             ".retro-creator *" #> retro.creator &
             ".retro-status *" #> retro.status.toString
       }

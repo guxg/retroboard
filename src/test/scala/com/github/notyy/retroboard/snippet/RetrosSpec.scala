@@ -54,9 +54,9 @@ class RetrosSpec extends FunSpec with ShouldMatchers with BeforeAndAfter with Lo
       RetroDB.initDB()
       RetroDB.retros.insert(
         List(
-          new Retro(title = "等待中的回顾", creator = "用户1", status = RetroStatus.Waiting),
-          new Retro(title = "进行中的回顾", creator = "用户2", status = RetroStatus.OnGoing),
-          new Retro(title = "结束的回顾", creator = "用户3", status = RetroStatus.Complete)
+          new Retro(title = "结束的回顾", creator = "用户3",passCode="12345", status = RetroStatus.Complete),
+          new Retro(title = "进行中的回顾", creator = "用户2",passCode="12345", status = RetroStatus.OnGoing),
+          new Retro(title = "等待中的回顾", creator = "用户1",passCode="12345", status = RetroStatus.Waiting)
         )
       )
     }

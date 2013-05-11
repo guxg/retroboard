@@ -24,9 +24,9 @@ object RetroStatus extends Enumeration {
   val Complete = Value(3, "已结束")
 }
 
-class Retro(val title: String, val creator: String, var status: RetroStatus.RetroStatus = RetroStatus.Waiting) extends KeyedEntity[Long]{
+class Retro(val title: String, val creator: String,val passCode: String, var status: RetroStatus.RetroStatus = RetroStatus.Waiting) extends KeyedEntity[Long]{
   val id: Long = 0
-  def this() = this("", "", RetroStatus.Waiting)
+  def this() = this("", "","", RetroStatus.Waiting)
 }
 
 object Retro {

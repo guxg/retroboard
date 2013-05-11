@@ -9,10 +9,12 @@ import net.liftweb.squerylrecord.SquerylRecord
 import org.squeryl.Session
 import java.sql.DriverManager
 import org.squeryl.adapters.H2Adapter
-import net.liftweb.common.Loggable
+import net.liftweb.common.{Empty, Loggable}
 import com.github.notyy.retroboard.lib.SqlLog
 import org.squeryl.PrimitiveTypeMode._
-import net.liftweb.http.LiftRules
+import net.liftweb.http.{LiftSession, S, LiftRules}
+import net.liftweb.mockweb.MockWeb._
+import net.liftweb.util.StringHelpers
 
 class RetrosSpec extends FunSpec with ShouldMatchers with BeforeAndAfter with Loggable {
   describe("Retro列表控件") {
@@ -37,6 +39,14 @@ class RetrosSpec extends FunSpec with ShouldMatchers with BeforeAndAfter with Lo
         findByTagAndAttr((rs \\ "tr")(0), "td", "class", "retro-creator").text should be === "用户1"
         findByTagAndAttr((rs \\ "tr")(0), "td", "class", "retro-status").text should be === "等待中"
       }
+    }
+    it("也可以显示指定id的retro详情") {
+      testS("http://localhost:8080/detail?id=1") {
+        S.param("id") should be === 1
+        val session: LiftSession = new LiftSession("", StringHelpers.randomString(20), Empty)
+        S.initIfUninitted(session) {
+          //test session here
+        }
     }
   }
 

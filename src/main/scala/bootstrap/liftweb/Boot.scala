@@ -48,6 +48,7 @@ class Boot extends Loggable {
     val entries = List(
       Menu.i("Home") / "index", // the simple way to declare a menu
       Menu.i("Detail") / "detail",
+      Menu.i("Verify") / "verify",
       // more complex because this menu allows anything in the
       // /static path to be visible
       Menu(Loc("Static", Link(List("static"), matchHead_? = true, "/static/index"),

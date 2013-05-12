@@ -30,9 +30,9 @@ class RetrosSpec extends FunSpec with ShouldMatchers with BeforeAndAfter with Lo
       val retroSnippet = new Retros
       transaction {
         val rs: NodeSeq = retroSnippet.list(template)
-//        logger.debug(s"rs=\n$rs")
+        //        logger.debug(s"rs=\n$rs")
         (findByTagAndAttr(rs, "tr", "class", "warning retro-line") \ "td")(0).text should be === "等待中的回顾"
-        (findByTagAndAttr(rs, "tr", "class", "error retro-line") \ "td") (0).text should be === "进行中的回顾"
+        (findByTagAndAttr(rs, "tr", "class", "error retro-line") \ "td")(0).text should be === "进行中的回顾"
         (findByTagAndAttr(rs, "tr", "class", "success retro-line") \ "td")(0).text should be === "结束的回顾"
         //检查一下第一个tr的内容是否符合期望
         findByTagAndAttr((rs \\ "tr")(0), "td", "class", "retro-title").text should be === "等待中的回顾"
@@ -42,11 +42,12 @@ class RetrosSpec extends FunSpec with ShouldMatchers with BeforeAndAfter with Lo
     }
     it("也可以显示指定id的retro详情") {
       testS("http://localhost:8080/detail?id=1") {
-        S.param("id") should be === 1
+        S.param("id").get should be === "1"
         val session: LiftSession = new LiftSession("", StringHelpers.randomString(20), Empty)
         S.initIfUninitted(session) {
           //test session here
         }
+      }
     }
   }
 
@@ -64,9 +65,9 @@ class RetrosSpec extends FunSpec with ShouldMatchers with BeforeAndAfter with Lo
       RetroDB.initDB()
       RetroDB.retros.insert(
         List(
-          new Retro(title = "结束的回顾", creator = "用户3",passCode="12345", status = RetroStatus.Complete),
-          new Retro(title = "进行中的回顾", creator = "用户2",passCode="12345", status = RetroStatus.OnGoing),
-          new Retro(title = "等待中的回顾", creator = "用户1",passCode="12345", status = RetroStatus.Waiting)
+          new Retro(title = "结束的回顾", creator = "用户3", passCode = "12345", status = RetroStatus.Complete),
+          new Retro(title = "进行中的回顾", creator = "用户2", passCode = "12345", status = RetroStatus.OnGoing),
+          new Retro(title = "等待中的回顾", creator = "用户1", passCode = "12345", status = RetroStatus.Waiting)
         )
       )
     }
